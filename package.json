@@ -2,7 +2,7 @@
   "name": "telegtam_bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "master": "index.js",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -17,5 +17,8 @@
   },
   "devDependencies": {
     "prettier": "3.5.0"
+  },
+  "engines": {
+    "node": ">=22.0.0"
   }
 }

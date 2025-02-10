@@ -6,9 +6,18 @@ const {
   Keyboard,
   InlineKeyboard,
 } = require("grammy");
-// const webInfo = 'https://zanuda-dzmitry.github.io/telegram-mini-app/'
 
 const bot = new Bot(process.env.BOT_API_KEY);
+
+const webhookUrl = "https://telegtam-bot-blush.vercel.app/";
+bot.api
+  .setWebhook(webhookUrl)
+  .then(() => {
+    console.log("Webhook set!");
+  })
+  .catch((err) => {
+    console.error("Error setting webhook:", err);
+  });
 
 bot.api.setMyCommands([
   { command: "start", description: "Запуск бота" },
