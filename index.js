@@ -16,7 +16,7 @@ bot.api.setMyCommands([
 ]);
 
 bot.command("start", async (ctx) => {
-  await ctx.reply("Hello, i am Dzmitry!");
+  await ctx.reply("Hello, i am Dzmitry!!!");
 });
 
 bot.command("info", async (ctx) => {
