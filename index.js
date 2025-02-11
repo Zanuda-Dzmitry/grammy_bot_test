@@ -31,7 +31,8 @@ app.post("/webhook", async (req, res) => {
 
 // Устанавливаем вебхук
 const setWebhook = async () => {
-  const webhookUrl = "https://grammy-bot-test-2.vercel.app/webhook"; // Укажите ваш URL
+  const webhookUrl =
+    "https://telegtam-c8z48qm7u-zanudas-projects.vercel.app/webhook"; // Укажите ваш URL
   await bot.api.setWebhook(webhookUrl);
   console.log("Webhook has been set.");
 };
