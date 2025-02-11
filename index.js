@@ -5,7 +5,11 @@ const bot = new Bot(process.env.BOT_API_KEY); // Создаем бота с то
 
 // Обрабатываем команду "/start"
 bot.command("start", async (ctx) => {
-  await ctx.reply("Hello, I am Dzmitry!!!"); // Отправляем сообщение в чат
+  await ctx.reply("Привет я Бот!"); // Отправляем сообщение в чат
+});
+
+bot.command("info", async (ctx) => {
+  await ctx.reply("Нужна информация?"); // Отправляем сообщение в чат
 });
 
 bot.start();
