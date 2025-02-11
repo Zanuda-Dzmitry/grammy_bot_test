@@ -22,7 +22,7 @@ bot.command("start", async (ctx) => {
 
 // Задайте свой вебхук перед запуском сервера
 const setWebhook = async () => {
-  const webhookUrl = "https://your-project.vercel.app/webhook"; // ваш URL
+  const webhookUrl = "https://grammy-bot-test-2.vercel.app/webhook"; // ваш URL
   await bot.api.setWebhook(webhookUrl);
 };
 
