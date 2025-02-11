@@ -5,16 +5,17 @@ const bodyParser = require("body-parser"); // Импортируем body-parser
 
 const bot = new Bot(process.env.BOT_API_KEY); // Создаем бота с токеном
 
-bot.command("start", async (ctx) => {
-  await ctx.reply("Hello, I am Dzmitry!!!"); // Отправляем сообщение в чат
-});
-
 const app = express(); // Создаем приложение Express
 app.use(bodyParser.json()); // Включаем парсинг JSON
 
 // Обрабатываем корневой маршрут
 app.get("/", (req, res) => {
   res.send("Бот работает!"); // Отправляем текст в ответ
+});
+
+// Обрабатываем команду "/start"
+bot.command("start", async (ctx) => {
+  await ctx.reply("Hello, I am Dzmitry!!!"); // Отправляем сообщение в чат
 });
 
 // Обрабатываем входящие обновления от Telegram
