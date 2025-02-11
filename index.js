@@ -1,28 +1,33 @@
-require("dotenv").config(); // Загружаем переменные окружения
-const { Bot } = require("grammy"); // Импортируем класс Bot
-const express = require("express"); // Импортируем express
-const bodyParser = require("body-parser"); // Импортируем body-parser
+require("dotenv").config();
+const { Bot } = require("grammy");
+const express = require("express");
+const bodyParser = require("body-parser");
 
-const bot = new Bot(process.env.BOT_API_KEY); // Создаем бота с токеном
+const bot = new Bot(process.env.BOT_API_KEY);
 
-const app = express(); // Создаем приложение Express
-app.use(bodyParser.json()); // Включаем парсинг JSON
+const app = express();
 
-// Обрабатываем входящие обновления от Telegram
-app.post("/webhook", (req, res) => {
-  bot.handleUpdate(req.body); // Передаем обновление боту
-  res.sendStatus(200); // Отправляем успешный ответ
-});
+// Подключаем middleware
+app.use(bodyParser.json());
 
 // Устанавливаем вебхук
+app.post("/webhook", (req, res) => {
+  bot.handleUpdate(req.body); // Передача обновления в бот
+  res.sendStatus(200); // Подтверждение получения
+});
+
+bot.command("start", async (ctx) => {
+  await ctx.reply("Hello, I am Dzmitry!!!");
+});
+
+// Задайте свой вебхук перед запуском сервера
 const setWebhook = async () => {
-  const webhookUrl = "https://your-project.vercel.app/webhook"; // Укажите ваш URL
+  const webhookUrl = "https://your-project.vercel.app/webhook"; // ваш URL
   await bot.api.setWebhook(webhookUrl);
 };
 
-// Запускаем вебхук и сервер
 setWebhook().then(() => {
   app.listen(process.env.PORT || 3000, () => {
-    console.log("Server is running..."); // Лог сообщения, что сервер запущен
+    console.log("Server is running...");
   });
 });
