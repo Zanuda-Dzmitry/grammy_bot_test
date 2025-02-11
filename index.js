@@ -5,6 +5,11 @@ const express = require("express");
 const bot = new Bot(process.env.BOT_API_KEY); // Создаем бота с токеном
 const app = express();
 
+// Обработка GET-запросов на корневой путь
+app.get("/", (req, res) => {
+  res.send("Бот работает!");
+});
+
 // Обрабатываем команду "/start"
 bot.command("start", async (ctx) => {
   await ctx.reply("Привет я Бот!"); // Отправляем сообщение в чат
